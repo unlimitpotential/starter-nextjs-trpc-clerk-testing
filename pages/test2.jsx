@@ -94,7 +94,10 @@ export default function Home({ data }) {
         )}
              {/* ... (other JSX elements for displaying data) */}
           
+           
+            <button onClick={() => toast('My first toast')}>
             <p>UUID is valid!</p>
+      </button>
             <pre>{JSON.stringify(data, null, 2)}</pre>
             <SignOutButton />
           </>
