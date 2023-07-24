@@ -3,25 +3,7 @@ import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
 export default function Home({ data }) {
-  const [fetchedData, setFetchedData] = useState(data);
-
-  useEffect(() => {
-    const intervalId = setInterval(fetchAndUpdateData, 5000); // Fetch data every 5 seconds
-
-    return () => {
-      clearInterval(intervalId); // Clean up the interval on component unmount
-    };
-  }, []);
-
-  async function fetchAndUpdateData() {
-    try {
-      // No need to fetch data here, use the existing fetchedData
-      setFetchedData(fetchedData => ({ ...fetchedData }));
-    } catch (error) {
-      console.error('Error updating data:', error.message);
-      // You can handle the error here as needed
-    }
-  }
+  // Your component logic here
 
   return (
     <>
@@ -34,14 +16,7 @@ export default function Home({ data }) {
       <SignedIn>
         {/* Your JSX elements for when the user is signed in */}
         {/* Display the fetched data */}
-        {fetchedData.map((item) => (
-          <div key={item.id}>
-            <p>Email: {item.email}</p>
-            <p>Phone: {item.phone}</p>
-            {/* Render other fields here */}
-          </div>
-        ))}
-
+        <pre>{JSON.stringify(data, null, 2)}</pre>
         {/* ... (rest of your JSX elements) */}
       </SignedIn>
       <SignedOut>
