@@ -8,7 +8,7 @@ import { TodoItem } from "../components/TodoItem/TodoItem";
 import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
 
-const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '22-22-22';
+const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '';
 const UserId = process.env.NOW_PUBLIC_USER_ID || '';
 const SpaceId = process.env.NOW_SPACE_ID || '';
 const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
