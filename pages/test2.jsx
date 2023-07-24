@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import Head from "next/head";
 import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
@@ -78,9 +79,17 @@ export default function Home({ data }) {
             <Toaster />
 
             {/* Your JSX elements for displaying valid data */}
+            {/* Conditionally render the components for each item in webhookResponseData */}
+            {fetchedData.webhookResponseData && fetchedData.webhookResponseData.length > 0 && (
+                  fetchedData.webhookResponseData.map(() => (
+                     <SignOutButton />   
+                  ))
+                )}
             <p>{fetchedData.message}</p>
             {/* Display webhook response data */}
             {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content && (
+  <SignOutButton />                )}
+   {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content2 && (
   <SignOutButton />                )}
             {/* ... (other JSX elements for displaying data) */}
             <button onClick={() => toast(`${fetchedData.message}`)}>
