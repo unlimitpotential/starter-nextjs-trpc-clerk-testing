@@ -175,7 +175,7 @@ export async function getServerSideProps(context) {
     // Fetch data from Directus
     const response = await fetch(`https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/${SpaceId}`, {
       headers: {
-        Authorization: `Bearer ${directusKey}`,
+        Authorization: 'Bearer 123456789', // Replace YOUR_AUTH_TOKEN with your actual authorization token
       },
     });
     const data = await response.json();
