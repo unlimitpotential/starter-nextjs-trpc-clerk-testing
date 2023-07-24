@@ -155,7 +155,6 @@ const SamplePage = () => {
       <Card>
             <header>
               <a
-                href={`blueprint-roles?blueprint&role=${BlueprintId}&projects=${SpaceId}&campaign=${unixTimestamp} `}
               >
                 Create
               </a>
