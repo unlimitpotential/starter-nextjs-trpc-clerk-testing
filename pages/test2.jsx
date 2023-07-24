@@ -73,7 +73,7 @@ export default function Home({ data }) {
         toast(item.content, {
           // You can customize the toast options here if needed
           position: 'top-right',
-          duration: 3000, // Duration for showing the toast (in milliseconds)
+          duration: 6000, // Duration for showing the toast (in milliseconds)
         });
       });
     }
