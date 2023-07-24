@@ -28,13 +28,14 @@ const showToastWithDelay = (content, delay) => {
 const SamplePage = () => {
   const [response, setResponse] = useState(null);
   const [nameOnCard, setNameOnCard] = useState('');
+  const user =  currentUser();
 
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
     // Payload data
     const payload = {
-      field1: UserId,
+      field1: user.id,
       field3: SpaceId,
       field2: nameOnCard,
     };
