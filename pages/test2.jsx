@@ -120,7 +120,7 @@ export default function Home({ data }) {
       {/* Your JSX elements for displaying valid data */}
       {isValid && fetchedData ? (
         <>
-          <Toaster expand={true} />
+          <Toaster />
           {/* Conditionally render the components for each item in webhookResponseData */}
           {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content && (
             <SignOutButton />
