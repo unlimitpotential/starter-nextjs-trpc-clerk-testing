@@ -6,7 +6,37 @@ import { useEffect, useState } from "react";
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
-export default function Home() {
+
+
+const Card = ({ item }) => {
+  return (
+    <div key={item.id} className="card">
+      <p>Email: {item.email}</p>
+      <p>Phone: {item.phone}</p>
+      {/* Render other fields here */}
+    </div>
+  );
+};
+export default function Home({ data }) {
+  const [fetchedData, setFetchedData] = useState(data);
+
+  useEffect(() => {
+    const intervalId = setInterval(fetchAndUpdateData, 5000); // Fetch data every 5 seconds
+
+    return () => {
+      clearInterval(intervalId); // Clean up the interval on component unmount
+    };
+  }, []);
+
+  async function fetchAndUpdateData() {
+    try {
+      // No need to fetch data here, use the existing fetchedData
+      setFetchedData(fetchedData => ({ ...fetchedData }));
+    } catch (error) {
+      console.error('Error updating data:', error.message);
+      // You can handle the error here as needed
+    }
+  }
   const [isValid, setIsValid] = useState(false);
   const { isSignedIn } = useAuth();
 
@@ -51,6 +81,11 @@ export default function Home() {
           <>
             {/* Your JSX elements for displaying valid data */}
             <p>UUID is valid!</p>
+            {fetchedData.map((item) => (
+                    <Card key={item.id} item={item} />
+
+        ))}
+
           </>
         ) : (
           <div>UUID is not valid</div>
