@@ -9,8 +9,6 @@ const SamplePage = () => {
   const [response, setResponse] = useState(null);
   const [nameOnCard, setNameOnCard] = useState('');
 
-  const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '';
-const UserId = process.env.NOW_PUBLIC_USER_ID || '';
 const SpaceId = process.env.NOW_SPACE_ID || '';
 const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
 console.log(UserId);
@@ -20,6 +18,8 @@ console.log(BlueprintId);
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
+    const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '';
+    const UserId = process.env.NOW_PUBLIC_USER_ID || '';
     // Payload data
     const payload = {
       field1: UserId,

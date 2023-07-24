@@ -8,7 +8,6 @@ import { TodoItem } from "../components/TodoItem/TodoItem";
 import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
 
-const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '';
 const UserId = process.env.NOW_PUBLIC_USER_ID || '';
 const SpaceId = process.env.NOW_SPACE_ID || '';
 const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
@@ -102,6 +101,7 @@ export default function Home({ uuidValidationResult = { isValid: true } }) {
 
   async function fetchData() {
     try {
+      const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '';
       const response = await fetch('https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions', {
         method: 'POST',
         headers: {
