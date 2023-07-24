@@ -65,12 +65,12 @@ export default function Home({ data }) {
             {/* Your JSX elements for displaying valid data */}
             <p>UUID is valid!</p>
             <pre>{JSON.stringify(data, null, 2)}</pre>
-
+            <SignOutButton />
           </>
         ) : (
           <Loading />
         )}
-        <SignOutButton />
+       
       </SignedIn>
       <SignedOut>
       <Card>
