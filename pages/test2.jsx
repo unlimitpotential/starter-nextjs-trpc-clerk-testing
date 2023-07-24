@@ -78,23 +78,7 @@ export default function Home({ data }) {
       });
     }
   }, [fetchedData]);
-  
-  const [githubSites, setGithubSites] = useState([]);
-  const { userId} = useAuth();
-  
-  useEffect(() => {
-    const fetchGithubSites = async () => {
-      try {
-        const response = await fetch(`/api/uuid-1?userId=${UserId}`);
-        const data = await response.json();
-        setGithubSites(data);
-      } catch (error) {
-        console.error("Failed to fetch githubSites:", error);
-      }
-    };
-  
-    fetchGithubSites();
-  }, []);
+
   return (
     <>
       <Head>
@@ -118,37 +102,11 @@ export default function Home({ data }) {
   <SignOutButton />                )}
             {/* ... (other JSX elements for displaying data) */}
             <button onClick={() => toast(`${fetchedData.message}`)}>
-              <p>UUID is valid! {}</p>
+              <p>UUID is valid!</p>
             </button>
             <pre>{JSON.stringify(data, null, 2)}</pre>
 
-            {githubSites.length > 0 ? (
-            githubSites.map((site) => (
-              <tr key={site.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  <time>{site.createdAt}</time>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {site.siteName}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {site.customCss}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a
-                    href={site.subdomain}
-                    className="text-orange-600 hover:text-orange-900"
-                  >
-                    View receipt
-                  </a>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td>Loading...</td>
-            </tr>
-          )}
+          
 
           </>
         ) : (
@@ -169,20 +127,13 @@ export default function Home({ data }) {
 
 export async function getServerSideProps(context) {
   try {
-    // Replace 'YOUR_BEARER_TOKEN' with the actual Bearer token value
-    const directusKey = fetchData.key;
-
     // Fetch data from Directus
-    const response = await fetch(`https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/juaso?${SpaceId}`, {
-      headers: {
-        Authorization: 'Bearer 123456789', // Replace YOUR_AUTH_TOKEN with your actual authorization token
-      },
-    });
+    const response = await fetch('https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/juaso');
     const data = await response.json();
 
     // Pass the fetched data as props to the page
     return {
-      props: { data, directusKey },
+      props: { data },
     };
   } catch (error) {
     console.error('Error fetching data from Directus:', error.message);
