@@ -62,7 +62,14 @@ export default function Home({ data }) {
       <SignedIn>
         {isValid ? (
           <>
-            {/* Your JSX elements for displaying valid data */}
+     {/* Your JSX elements for displaying valid data */}
+     <p>{data.message}</p>
+        {/* Display webhook response data */}
+        {data.webhookResponseData && (
+          <p>{JSON.stringify(data.webhookResponseData)}</p>
+        )}
+             {/* ... (other JSX elements for displaying data) */}
+          
             <p>UUID is valid!</p>
             <pre>{JSON.stringify(data, null, 2)}</pre>
             <SignOutButton />
