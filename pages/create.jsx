@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Toaster, toast } from 'sonner';
 import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
-import Head from "next/head";
 
 import { RouterOutputs, trpc } from "../utils/trpc";
 import { AddTodo } from "../components/AddTodo/AddTodo";
@@ -153,16 +152,8 @@ const SamplePage = () => {
   return (
 
 
-    <>
-      <Head>
-        <title>Xata & Clerk starter</title>
-        <meta name="description" content="Xata & Clerk starter" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <SignedIn>
-        <Card>
-        <div>
+    
+    <div>
 <Toaster expand={true} />
 
       <h1>Create Page</h1>
@@ -186,39 +177,6 @@ const SamplePage = () => {
         </div>
       )}
     </div>
-          <section>
-            <ul>
-              {todos?.map((todo) => (
-                <TodoItem
-                  id={todo.id}
-                  key={todo.id}
-                  title={todo.title}
-                  isCompleted={todo.isCompleted}
-                  onDelete={deleteTodo}
-                  onEdit={updateTodo}
-                />
-              ))}
-            </ul>
-          </section>
-          <section>
-            <AddTodo onAdd={addTodo} />
-          </section>
-          <footer>
-            <p>Double-click to edit a todo - Press Enter to validate</p>
-            <SignOutButton />
-          </footer>
-        </Card>
-      </SignedIn>
-      <SignedOut>
-        <Card>
-          <header>
-            <h1>Todos</h1>
-          </header>
-          <Welcome />
-        </Card>
-      </SignedOut>
-    </>
-    
   );
 };
 
