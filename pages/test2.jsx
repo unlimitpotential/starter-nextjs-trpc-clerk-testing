@@ -127,11 +127,12 @@ export default function Home({ data }) {
           </button>
 
           {/* Render the fetched data */}
-          {data && data.length > 0 ? (
-            <DirectusCard data={data} />
-          ) : (
-            <div>No data available.</div>
-          )}
+           {/* Render the fetched data */}
+           {data && data.data && data.data.length > 0 ? (
+              <DirectusCard data={data.data} />
+            ) : (
+              <div>No data available.</div>
+            )}
         </>
       ) : (
         <div className="flex justify-center items-center h-screen">
