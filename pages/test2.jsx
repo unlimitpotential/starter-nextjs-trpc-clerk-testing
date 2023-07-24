@@ -126,7 +126,6 @@ export default function Home({ data }) {
             <p>UUID is valid!</p>
           </button>
 
-          {/* Render the fetched data */}
            {/* Render the fetched data */}
            {data && data.data && data.data.length > 0 ? (
               <DirectusCard data={data.data} />
