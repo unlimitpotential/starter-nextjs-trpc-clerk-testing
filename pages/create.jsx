@@ -11,8 +11,8 @@ const SamplePage = () => {
 
     // Payload data
     const payload = {
-      field1: "value1",
-      field2: "value2"
+      field1: "age",
+      field2: "id"
     };
 
     // Headers
