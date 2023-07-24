@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Toaster, toast } from 'sonner';
+import { RouterOutputs, trpc } from "../utils/trpc";
+import { AddTodo } from "../components/AddTodo/AddTodo";
+import { TodoItem } from "../components/TodoItem/TodoItem";
+import { Card } from "../components/Card/Card";
+import { Welcome } from "../components/Welcome/Welcome";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '22-22-22';
 const UserId = process.env.NOW_PUBLIC_USER_ID || 'user_2LSoovL0oXdM3kxYgjRnhDOuFrA';
@@ -146,6 +151,38 @@ const SamplePage = () => {
 <Toaster expand={true} />
 
       <h1>Create Page</h1>
+      <Card>
+            <header>
+              <a
+                href={`blueprint-roles?blueprint&role=${BlueprintId}&projects=${SpaceId}&campaign=${unixTimestamp} `}
+              >
+                Create
+              </a>
+            </header>
+            <section>
+              <ul>
+                {todos?.map((todo) => (
+                  <TodoItem
+                    id={todo.id}
+                    key={todo.id}
+                    title={todo.title}
+                    isCompleted={todo.isCompleted}
+                    onDelete={deleteTodo}
+                    onEdit={updateTodo}
+                  />
+                ))}
+              </ul>
+            </section>
+            <section>
+              <AddTodo onAdd={fetchData} />
+            </section>
+            <footer>
+              <p>
+                Double-click to edit a todo - Press Enter to validate
+              </p>
+              <SignOutButton />
+            </footer>
+          </Card>
       <input
         type="text"
         id="name"
