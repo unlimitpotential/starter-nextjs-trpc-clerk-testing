@@ -31,11 +31,10 @@ const SamplePage = () => {
 
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
-    const user = await currentUser();
 
     // Payload data
     const payload = {
-      field1: user.id,
+      field1: UserId,
       field3: SpaceId,
       field2: nameOnCard,
     };
@@ -192,7 +191,12 @@ const SamplePage = () => {
         className="mt-2 block w-full rounded-xl border-2 border-muted-3 bg-transparent px-4 py-2.5 font-semibold text-heading placeholder:text-text/50 focus:border-primary focus:outline-none focus:ring-0 sm:text-sm"
       />
       <button onClick={handleClick}>Make API Request</button>
-      
+      {response && (
+        <div>
+          <h2>Response:</h2>
+          <pre>{JSON.stringify(response, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
 };
