@@ -14,14 +14,15 @@ console.log(BlueprintId);
 
 const SamplePage = () => {
   const [response, setResponse] = useState(null);
-  
+  const [nameOnCard, setNameOnCard] = useState('');
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
     // Payload data
     const payload = {
       field1: UserId,
-      field2: SpaceId
+      field2: SpaceId,
+      field3: nameOnCard,
     };
 
     // Headers
@@ -48,7 +49,17 @@ const SamplePage = () => {
 
   return (
     <div>
-      <h1>Sample Page</h1>
+      <h1>Create Page</h1>
+      <input
+                      type="text"
+                      id="name"
+
+                      onChange={(e) =>
+                        setNameOnCard(e.currentTarget.value)
+                    }     
+                      name="name-on-card"
+                      className="mt-2 block w-full rounded-xl border-2 border-muted-3 bg-transparent px-4 py-2.5 font-semibold text-heading placeholder:text-text/50 focus:border-primary focus:outline-none focus:ring-0 sm:text-sm"
+                      />
       <button onClick={handleClick}>Make API Request</button>
       {response && (
         <div>
