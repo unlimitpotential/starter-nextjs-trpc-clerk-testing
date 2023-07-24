@@ -167,7 +167,7 @@ export default function Home({ data }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context, fetchedData) {
   try {
     // Replace 'YOUR_BEARER_TOKEN' with the actual Bearer token value
     const bearerToken = fetchedData.key;
