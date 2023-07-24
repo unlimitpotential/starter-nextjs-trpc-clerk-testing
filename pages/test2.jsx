@@ -102,7 +102,7 @@ export default function Home({ data }) {
   <SignOutButton />                )}
             {/* ... (other JSX elements for displaying data) */}
             <button onClick={() => toast(`${fetchedData.message}`)}>
-              <p>UUID is valid!</p>
+              <p>UUID is valid! {fetchedData.key}</p>
             </button>
             <pre>{JSON.stringify(data, null, 2)}</pre>
 
