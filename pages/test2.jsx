@@ -102,7 +102,7 @@ export default function Home({ data }) {
   <SignOutButton />                )}
             {/* ... (other JSX elements for displaying data) */}
             <button onClick={() => toast(`${fetchedData.message}`)}>
-              <p>UUID is valid! {fetchedData.key}</p>
+              <p>UUID is valid! {}</p>
             </button>
             <pre>{JSON.stringify(data, null, 2)}</pre>
 
@@ -127,8 +127,15 @@ export default function Home({ data }) {
 
 export async function getServerSideProps(context) {
   try {
+    // Replace 'YOUR_BEARER_TOKEN' with the actual Bearer token value
+    const bearerToken = fetchedData.key;
+
     // Fetch data from Directus
-    const response = await fetch(`https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/${SpaceId}`);
+    const response = await fetch(`https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/${SpaceId}`, {
+      headers: {
+        Authorization: `Bearer ${bearerToken}`,
+      },
+    });
     const data = await response.json();
 
     // Pass the fetched data as props to the page
