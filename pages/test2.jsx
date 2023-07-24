@@ -117,8 +117,11 @@ export default function Home({ data }) {
             <button onClick={() => toast(`${fetchedData.message}`)}>
               <p>UUID is valid!</p>
             </button>
-           <DirectusCard/>
-
+            {data && data.length > 0 ? (
+          <DirectusCard data={data} />
+        ) : (
+          <div>No data available.</div>
+        )}
           
 
           </>
