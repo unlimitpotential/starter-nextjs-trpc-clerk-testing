@@ -60,7 +60,7 @@ const SamplePage = () => {
     if (response && response.webhookResponseData && response.webhookResponseData.length > 0) {
       // Show each item's content in the webhookResponseData as a toast with a 10-second delay between each
       response.webhookResponseData.forEach((item, index) => {
-        const delay = index * 10000; // 10 seconds delay for each item
+        const delay = index * 7000; // 7 seconds delay for each item
         showToastWithDelay(item.content, delay);
       });
     }
