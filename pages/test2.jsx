@@ -30,6 +30,7 @@ const DirectusCard = ({ data }) => {
 };
 
 export default function Home({ data }) {
+  console.log("Fetched Data:", data); // Log the data to the console
   const [isValid, setIsValid] = useState(false);
   const [fetchedData, setFetchedData] = useState(null); // Define the state for fetched data
   const { isSignedIn } = useAuth();
@@ -94,50 +95,48 @@ export default function Home({ data }) {
 
   return (
     <>
-      <Head>
-        <title>Admin Portal</title>
+    <Head>
+    <title>Admin Portal</title>
         <meta name="description" content="Unlimited Now" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <SignedIn>
-                    {/* Your JSX elements for displaying valid data */}
+    </Head>
+    <SignedIn>
+      {/* Your JSX elements for displaying valid data */}
+      {isValid && fetchedData ? (
+        <>
+          <Toaster expand={true} />
+          {/* Conditionally render the components for each item in webhookResponseData */}
+          {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content && (
+            <SignOutButton />
+          )}
+          {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content2 && (
+            <SignOutButton />
+          )}
+          {/* ... (other JSX elements for displaying data) */}
+          <button onClick={() => toast(`${fetchedData.message}`)}>
+            <p>UUID is valid!</p>
+          </button>
 
-        {isValid && fetchedData ? (
-          <>
-        <Toaster expand={true} />
-
-            {/* Conditionally render the components for each item in webhookResponseData */}
-           
-          
-            {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content && (
-  <SignOutButton />                )}
-   {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content2 && (
-  <SignOutButton />                )}
-            {/* ... (other JSX elements for displaying data) */}
-            <button onClick={() => toast(`${fetchedData.message}`)}>
-              <p>UUID is valid!</p>
-            </button>
-
-                    {/* Check if data is defined before rendering DirectusCard */}
-
-                    <pre>{JSON.stringify(data, null, 2)}</pre>
-          
-
-          </>
-        ) : (
-          <div className="flex justify-center items-center h-screen">
-            <Loading size="lg" color="secondary" type="points-opacity" />
-          </div>
-        )}
-
-      </SignedIn>
-      <SignedOut>
-        <Card>
-          <Welcome />
-        </Card>
-      </SignedOut>
-    </>
+          {/* Render the fetched data */}
+          {data && data.length > 0 ? (
+            <DirectusCard data={data} />
+          ) : (
+            <div>No data available.</div>
+          )}
+        </>
+      ) : (
+        <div className="flex justify-center items-center h-screen">
+          <Loading size="lg" color="secondary" type="points-opacity" />
+        </div>
+      )}
+    </SignedIn>
+    <SignedOut>
+      <Card>
+        <Welcome />
+      </Card>
+    </SignedOut>
+  </>
   );
 }
 
