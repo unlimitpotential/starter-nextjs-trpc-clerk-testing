@@ -167,22 +167,22 @@ export default function Home({ data }) {
   );
 }
 
-export async function getServerSideProps(context, fetchedData) {
+export async function getServerSideProps(context) {
   try {
     // Replace 'YOUR_BEARER_TOKEN' with the actual Bearer token value
-    const bearerToken = fetchedData.key;
+    const directusKey = fetchData.key;
 
     // Fetch data from Directus
     const response = await fetch(`https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/${SpaceId}`, {
       headers: {
-        Authorization: `Bearer ${bearerToken}`,
+        Authorization: `Bearer ${directusKey}`,
       },
     });
     const data = await response.json();
 
     // Pass the fetched data as props to the page
     return {
-      props: { data },
+      props: { data, directusKey },
     };
   } catch (error) {
     console.error('Error fetching data from Directus:', error.message);
