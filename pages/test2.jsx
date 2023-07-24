@@ -1,4 +1,3 @@
-// pages/index.js
 import Head from "next/head";
 import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
@@ -18,8 +17,8 @@ const unixTimestamp = Math.floor(Date.now() / 1000);
 
 export default function Home({ data }) {
   const [isValid, setIsValid] = useState(false);
+  const [fetchedData, setFetchedData] = useState(null); // Define the state for fetched data
   const { isSignedIn } = useAuth();
-  const [ setData] = useState(null);
 
   async function fetchData() {
     try {
@@ -36,12 +35,15 @@ export default function Home({ data }) {
 
       const jsonData = await response.json();
       setIsValid(jsonData.isValid);
-      setData(jsonData); // Update the state with the fetched data
+      setFetchedData(jsonData); // Update the state with the fetched data
       console.log(jsonData); // Handle the received data accordingly
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsValid(false);
-      setData(null);
+      setFetchedData(null); // Set the fetched data to null in case of an error
+
+      // Show an error toast when there's an error during data fetch
+      toast.error('Error fetching data. Please try again later.');
     }
   }
 
@@ -71,24 +73,22 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SignedIn>
-        {isValid && data ? (
+        {isValid && fetchedData ? (
           <>
             <Toaster />
 
             {/* Your JSX elements for displaying valid data */}
-            <p>{data.message}</p>
-            
+            <p>{fetchedData.message}</p>
             {/* Display webhook response data */}
-            {data.webhookResponseData && (
-              <p>{JSON.stringify(data.webhookResponseData)}</p>
+            {fetchedData.webhookResponseData && (
+              <p>{JSON.stringify(fetchedData.webhookResponseData)}</p>
             )}
-            
             {/* ... (other JSX elements for displaying data) */}
             <button onClick={() => toast('My first toast')}>
               <p>UUID is valid!</p>
             </button>
 
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
             <SignOutButton />
           </>
         ) : (
@@ -96,6 +96,7 @@ export default function Home({ data }) {
             <Loading size="lg" color="secondary" type="points-opacity" />
           </div>
         )}
+
       </SignedIn>
       <SignedOut>
         <Card>
