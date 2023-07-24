@@ -80,9 +80,8 @@ export default function Home({ data }) {
             {/* Your JSX elements for displaying valid data */}
             <p>{fetchedData.message}</p>
             {/* Display webhook response data */}
-            {fetchedData.webhookResponseData && (
-              <p>{JSON.stringify(fetchedData.webhookResponseData)}</p>
-            )}
+            {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content && (
+  <SignOutButton />                )}
             {/* ... (other JSX elements for displaying data) */}
             <button onClick={() => toast(`${fetchedData.message}`)}>
               <p>UUID is valid!</p>
@@ -94,7 +93,7 @@ export default function Home({ data }) {
                   <p>{item.phone}</p>
                   {/* ... (other data fields) ... */}
                 </Card>
-              ))}            <SignOutButton />
+              ))}          
           </>
         ) : (
           <div className="flex justify-center items-center h-screen">
