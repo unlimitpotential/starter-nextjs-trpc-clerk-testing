@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
-export default function Home() {
+export default function Home({ data }) {
   const [isValid, setIsValid] = useState(false);
   const { isSignedIn } = useAuth();
 
@@ -51,6 +51,8 @@ export default function Home() {
           <>
             {/* Your JSX elements for displaying valid data */}
             <p>UUID is valid!</p>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+
           </>
         ) : (
           <div>UUID is not valid</div>
