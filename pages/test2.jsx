@@ -2,6 +2,7 @@
 import Head from "next/head";
 import { SignedIn, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import { Loading } from '@nextui-org/react';
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
@@ -65,7 +66,7 @@ export default function Home({ data }) {
 
           </>
         ) : (
-          <div>UUID is not valid</div>
+          <Loading />
         )}
         <SignOutButton />
       </SignedIn>
