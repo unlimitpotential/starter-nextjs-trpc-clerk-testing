@@ -6,7 +6,6 @@ import { Loading } from '@nextui-org/react';
 import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
 import { Toaster, toast } from 'sonner';
-import DirectusDataComponent from "../components/directus";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
@@ -16,6 +15,19 @@ const SpaceId = process.env.NOW_SPACE_ID || '';
 const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
 
 const unixTimestamp = Math.floor(Date.now() / 1000);
+const DirectusCard = ({ data }) => {
+  return (
+    <div>
+      {data.map((item) => (
+        <div key={item.id}>
+          <h2>{item.email}</h2>
+          <p>{item.phone}</p>
+          {/* Render other data fields as needed */}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default function Home({ data }) {
   const [isValid, setIsValid] = useState(false);
@@ -105,7 +117,7 @@ export default function Home({ data }) {
             <button onClick={() => toast(`${fetchedData.message}`)}>
               <p>UUID is valid!</p>
             </button>
-            <DirectusDataComponent data={data} /> {/* Render the Directus data here */}
+           <DirectusCard/>
 
           
 
