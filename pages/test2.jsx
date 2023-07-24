@@ -137,7 +137,6 @@ export async function getServerSideProps(context) {
       // Next.js will re-generate this page 
       // when a request comes in, at most once
       // every 10 seconds
-      revalidate: 10,
     };
   } catch (error) {
     console.error('Error fetching data from Directus:', error.message);
