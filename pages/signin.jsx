@@ -101,7 +101,7 @@ export default function SignUp(props) {
             <div className="m-auto space-y-8 sm:w-4/5 md:w-3/5 xl:w-2/5">
               <div className="p-8 md:py-12">
                 <img src="https://res.cloudinary.com/unlimitednow/image/upload/v1683344041/https___res.cloudinary.com_unlimitednow_image_upload_v1675403872_landscape-format_-transparent-background_-shadow-designify_kfxh2w_rvwg4f.png" loading="lazy" alt=" logo" />
-                <h2 className="mt-20 mb-8 text-3xl font-bold text-gray-800 dark:text-white">Welcome back to Unlimited Now.</h2>
+                <h2 className="mt-20 mb-8 text-3xl font-bold text-gray-800 dark:text-black">Welcome back to Unlimited Now.</h2>
 
                 <p className="border-t border-gray-100 dark:border-gray-700 pt-6 text-sm text-gray-500 dark:text-gray-400">
  Don't have an account ?
