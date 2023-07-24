@@ -54,7 +54,18 @@ export default function Home({ data }) {
 
   useEffect(() => {
     if (isSignedIn) {
-      setIsValid(data.isValid); // Use the `isValid` value from the `data` prop
+      fetchData()
+        .then(() => {
+          // Show a success toast when data fetch is successful
+          toast.success('Data fetched successfully!');
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setIsValid(false);
+
+          // Show an error toast when there's an error during data fetch
+          toast.error('Error fetching data. Please try again later.');
+        });
     }
   }, [isSignedIn]);
 
@@ -69,24 +80,26 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SignedIn>
-      {isValid ? (
+        {isValid ? (
           <>
-            <Toaster />
-            {/* Your JSX elements for displaying valid data */}
-            <p>{data.message}</p>
-            {/* Display webhook response data */}
-            {data.webhookResponseData && (
-              <p>{JSON.stringify(data.webhookResponseData)}</p>
-            )}
-            {/* ... (other JSX elements for displaying data) */}
+                <Toaster />
+
+     {/* Your JSX elements for displaying valid data */}
+     <p>{data.message}</p>
+        {/* Display webhook response data */}
+        {data.webhookResponseData && (
+          <p>{JSON.stringify(data.webhookResponseData)}</p>
+        )}
+             {/* ... (other JSX elements for displaying data) */}
+          
             <p>UUID is valid!</p>
             <pre>{JSON.stringify(data, null, 2)}</pre>
             <SignOutButton />
           </>
         ) : (
           <div className="flex justify-center items-center h-screen">
-            <Loading size="lg" color="secondary" type="points-opacity" />
-          </div>
+          <Loading size="lg" color="secondary" type="points-opacity" />
+        </div>
         )}
        
       </SignedIn>
