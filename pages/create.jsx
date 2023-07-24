@@ -67,7 +67,7 @@ const SamplePage = () => {
 
   return (
     <div>
-                <Toaster />
+<Toaster expand={true} />
 
       <h1>Create Page</h1>
       <input
