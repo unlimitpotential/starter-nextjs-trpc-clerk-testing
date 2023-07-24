@@ -213,7 +213,7 @@ return (
               </ul>
             </section>
             <section>
-              <AddTodo onAdd={fetchData} />
+            <AddTodo onAdd={addTodo} />
             </section>
             <footer>
               <p>
