@@ -88,8 +88,13 @@ export default function Home({ data }) {
               <p>UUID is valid!</p>
             </button>
 
-            <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
-            <SignOutButton />
+            {data.map((item) => (
+                <Card key={item.id}>
+                  {/* Display the relevant data from the item */}
+                  <p>{item.phone}</p>
+                  {/* ... (other data fields) ... */}
+                </Card>
+              ))}            <SignOutButton />
           </>
         ) : (
           <div className="flex justify-center items-center h-screen">
