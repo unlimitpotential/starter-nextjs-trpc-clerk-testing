@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model wishlist {
+  id                  String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  notionPageUrl       String   @unique @db.VarChar
+  siteName            String   @db.VarChar
+  siteDesc            String   @db.VarChar
+  customCss           String?  @db.VarChar
+  createdAt           DateTime @default(now()) @db.Timestamp(6)
+  createdBy           String   @db.VarChar
+  subdomain           String   @unique @db.VarChar
+  ogImageUrl          String?  @db.VarChar
+  customHead          String?  @db.VarChar
+  inShowcase          Boolean  @default(false)
+  isPasswordProtected Boolean  @default(false)
+}
+
+model cart {
+  id            String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  url           String  @unique @db.VarChar
+  notionPageUrl String  @unique @db.VarChar
+  ogImageUrl    String? @db.VarChar
+}
+
+model orders {
+  id         String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  repoUrl    String   @unique @db.VarChar
+  subdomain  String   @unique @db.VarChar
+  createdAt  DateTime @default(now()) @db.Timestamp(6)
+  createdBy  String   @db.VarChar
+  siteName   String   @db.VarChar
+  customCss  String?  @db.VarChar
+  customHead String?  @db.VarChar
+  inShowcase Boolean? @default(false)
+}
+
+model Post {
+  id          Int          @id @default(autoincrement())
+  title       String       @db.VarChar(255)
+  content     String       @db.Text
+    siteName            String   @db.VarChar
+  ogImageUrl          String?  @db.VarChar
+  Url          String?  @db.VarChar
+
+  contentHtml String       @db.Text
+  inShowcase          Boolean  @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  createdBy           String   @db.VarChar
+}
