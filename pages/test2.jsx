@@ -13,14 +13,21 @@ const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.a
 const UserId = process.env.NOW_PUBLIC_USER_ID || '';
 const SpaceId = process.env.NOW_SPACE_ID || '';
 const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
+
+
+
 console.log(UserId);
 console.log(SpaceId);
 console.log(BlueprintId);
+
 const unixTimestamp = Math.floor(Date.now() / 1000);
 console.log(unixTimestamp);
+
+
 export default function Home({ data }) {
   const [isValid, setIsValid] = useState(false);
   const { isSignedIn } = useAuth();
+  const [ setData] = useState(null);
 
   async function fetchData() {
     try {
@@ -37,10 +44,13 @@ export default function Home({ data }) {
 
       const jsonData = await response.json();
       setIsValid(jsonData.isValid);
+      setData(jsonData);
       console.log(jsonData); // Handle the received data accordingly
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsValid(false);
+      setData(null);
+
     }
   }
 
