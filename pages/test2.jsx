@@ -19,6 +19,7 @@ const unixTimestamp = Math.floor(Date.now() / 1000);
 export default function Home({ data }) {
   const [isValid, setIsValid] = useState(false);
   const { isSignedIn } = useAuth();
+  const [ setData] = useState(null);
 
   async function fetchData() {
     try {
