@@ -84,7 +84,7 @@ export default function Home({ data }) {
               <p>{JSON.stringify(fetchedData.webhookResponseData)}</p>
             )}
             {/* ... (other JSX elements for displaying data) */}
-            <button onClick={() => toast('My first toast')}>
+            <button onClick={() => toast(`${fetchedData.message}`)}>
               <p>UUID is valid!</p>
             </button>
 
