@@ -41,7 +41,7 @@ const showToastWithDelay = (content, delay) => {
   setTimeout(() => {
     toast(content, {
       position: 'top-right',
-      duration: 6000, // Duration for showing the toast (in milliseconds)
+      duration: 30000, // Duration for showing the toast (in milliseconds)
     });
   }, delay);
 };
