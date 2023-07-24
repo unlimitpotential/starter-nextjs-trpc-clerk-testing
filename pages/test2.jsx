@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Loading } from '@nextui-org/react';
 import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
+import { Toaster, toast } from 'sonner';
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
@@ -45,7 +46,18 @@ export default function Home({ data }) {
 
   useEffect(() => {
     if (isSignedIn) {
-      fetchData();
+      fetchData()
+        .then(() => {
+          // Show a success toast when data fetch is successful
+          toast.success('Data fetched successfully!');
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setIsValid(false);
+
+          // Show an error toast when there's an error during data fetch
+          toast.error('Error fetching data. Please try again later.');
+        });
     }
   }, [isSignedIn]);
 
@@ -62,6 +74,8 @@ export default function Home({ data }) {
       <SignedIn>
         {isValid ? (
           <>
+                <Toaster />
+
      {/* Your JSX elements for displaying valid data */}
      <p>{data.message}</p>
         {/* Display webhook response data */}
