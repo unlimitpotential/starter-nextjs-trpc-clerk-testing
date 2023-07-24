@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Toaster, toast } from 'sonner';
 import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
+import { RouterOutputs, trpc } from "../utils/trpc";
+import { AddTodo } from "../components/AddTodo/AddTodo";
+import { TodoItem } from "../components/TodoItem/TodoItem";
+import { Card } from "../components/Card/Card";
+import { Welcome } from "../components/Welcome/Welcome";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '22-22-22';
 const UserId = process.env.NOW_PUBLIC_USER_ID || 'user_2LSoovL0oXdM3kxYgjRnhDOuFrA';
