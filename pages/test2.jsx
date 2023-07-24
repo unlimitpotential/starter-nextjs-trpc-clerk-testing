@@ -14,15 +14,7 @@ const UserId = process.env.NOW_PUBLIC_USER_ID || '';
 const SpaceId = process.env.NOW_SPACE_ID || '';
 const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
 
-
-
-console.log(UserId);
-console.log(SpaceId);
-console.log(BlueprintId);
-
 const unixTimestamp = Math.floor(Date.now() / 1000);
-console.log(unixTimestamp);
-
 
 export default function Home({ data }) {
   const [isValid, setIsValid] = useState(false);
@@ -43,12 +35,12 @@ export default function Home({ data }) {
 
       const jsonData = await response.json();
       setIsValid(jsonData.isValid);
+      setData(jsonData); // Update the state with the fetched data
       console.log(jsonData); // Handle the received data accordingly
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsValid(false);
       setData(null);
-
     }
   }
 
@@ -69,8 +61,6 @@ export default function Home({ data }) {
     }
   }, [isSignedIn]);
 
-  
-
   return (
     <>
       <Head>
@@ -80,36 +70,37 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SignedIn>
-        {isValid  && data ? (
+        {isValid && data ? (
           <>
-                <Toaster />
+            <Toaster />
 
-     {/* Your JSX elements for displaying valid data */}
-     <p>{data.message}</p>
-        {/* Display webhook response data */}
-        {data.webhookResponseData && (
-          <p>{JSON.stringify(data.webhookResponseData)}</p>
-        )}
-             {/* ... (other JSX elements for displaying data) */}
-             <button onClick={() => toast('My first toast')}>
-             <p>UUID is valid!</p>
-      </button>
-          
+            {/* Your JSX elements for displaying valid data */}
+            <p>{data.message}</p>
+            
+            {/* Display webhook response data */}
+            {data.webhookResponseData && (
+              <p>{JSON.stringify(data.webhookResponseData)}</p>
+            )}
+            
+            {/* ... (other JSX elements for displaying data) */}
+            <button onClick={() => toast('My first toast')}>
+              <p>UUID is valid!</p>
+            </button>
+
             <pre>{JSON.stringify(data, null, 2)}</pre>
             <SignOutButton />
           </>
         ) : (
           <div className="flex justify-center items-center h-screen">
-          <Loading size="lg" color="secondary" type="points-opacity" />
-        </div>
+            <Loading size="lg" color="secondary" type="points-opacity" />
+          </div>
         )}
-       
       </SignedIn>
       <SignedOut>
-      <Card>
-        <Welcome />
-      </Card>
-    </SignedOut>
+        <Card>
+          <Welcome />
+        </Card>
+      </SignedOut>
     </>
   );
 }
