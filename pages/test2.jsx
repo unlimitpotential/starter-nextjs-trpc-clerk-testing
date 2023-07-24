@@ -82,30 +82,44 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SignedIn>
-        {isValid ? (
-          <>
-                <Toaster />
 
-     {/* Your JSX elements for displaying valid data */}
-     <p>{data.message}</p>
-        {/* Display webhook response data */}
-        {data.webhookResponseData && (
-          <p>{JSON.stringify(data.webhookResponseData)}</p>
-        )}
-             {/* ... (other JSX elements for displaying data) */}
-          
-           
-            <button onClick={() => toast('My first toast')}>
-            <p>UUID is valid!</p>
-      </button>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+      {isValid ? (
+          <div className="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+            <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl" />
+              <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {data.map((item) => (
+                    <Card
+                      key={item.id}
+                      title={item.email} // Display 'email' as the title in the card
+                      description={`Phone: ${item.phone}`} // Display 'phone' in the description of the card
+                    />
+                  ))}
+                </div>
+              </div>
+              <Toaster />
+
+{/* Your JSX elements for displaying valid data */}
+<p>{data.message}</p>
+   {/* Display webhook response data */}
+   {data.webhookResponseData && (
+     <p>{JSON.stringify(data.webhookResponseData)}</p>
+   )}
+        {/* ... (other JSX elements for displaying data) */}
+     
+      
+       <button onClick={() => toast('My first toast')}>
+       <p>UUID is valid!</p>
+ </button>
+            </div>
             <SignOutButton />
-          </>
+          </div>
         ) : (
           <div className="flex justify-center items-center h-screen">
           <Loading size="lg" color="secondary" type="points-opacity" />
-        </div>
-        )}
+        </div>        )}
+       
        
       </SignedIn>
       <SignedOut>
