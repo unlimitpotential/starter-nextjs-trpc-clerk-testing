@@ -75,7 +75,9 @@ export default function Home({ data }) {
             <SignOutButton />
           </>
         ) : (
-          <Loading />
+          <div className="flex justify-center items-center h-screen">
+          <Loading size="lg" color="secondary" type="points-opacity" />
+        </div>
         )}
        
       </SignedIn>
