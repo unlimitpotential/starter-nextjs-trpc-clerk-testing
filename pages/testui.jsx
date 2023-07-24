@@ -2,16 +2,6 @@ import Head from "next/head";
 import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
-
-const Card = ({ item }) => {
-  return (
-    <div key={item.id} className="card">
-      <p>Email: {item.email}</p>
-      <p>Phone: {item.phone}</p>
-      {/* Render other fields here */}
-    </div>
-  );
-};
 export default function Home({ data }) {
   const [fetchedData, setFetchedData] = useState(data);
 
@@ -45,8 +35,11 @@ export default function Home({ data }) {
         {/* Your JSX elements for when the user is signed in */}
         {/* Display the fetched data */}
         {fetchedData.map((item) => (
-                    <Card key={item.id} item={item} />
-
+          <div key={item.id}>
+            <p>Email: {item.email}</p>
+            <p>Phone: {item.phone}</p>
+            {/* Render other fields here */}
+          </div>
         ))}
 
         {/* ... (rest of your JSX elements) */}
