@@ -81,8 +81,14 @@ export default function Home({ data }) {
             {/* Your JSX elements for displaying valid data */}
             {/* Conditionally render the components for each item in webhookResponseData */}
             {fetchedData.webhookResponseData && fetchedData.webhookResponseData.length > 0 && (
-                  fetchedData.webhookResponseData.map(() => (
-                     <SignOutButton />   
+                  fetchedData.webhookResponseData.map((item, index) => (
+                    <button
+                      key={index}
+                      onClick={() => toast(item.content)} // Display item.content in the toast
+                      className="bg-blue-500 text-white px-4 py-2 rounded"
+                    >
+                      Show Content {index + 1}
+                    </button>
                   ))
                 )}
             <p>{fetchedData.message}</p>
