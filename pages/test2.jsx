@@ -104,6 +104,7 @@ export default function Home({ data }) {
             <button onClick={() => toast(`${fetchedData.message}`)}>
               <p>UUID is valid!</p>
             </button>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
 
           
 
