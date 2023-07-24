@@ -60,3 +60,23 @@ export default function Home() {
     </>
   );
 }
+
+export async function getServerSideProps(context) {
+  try {
+    // Fetch data from Directus
+    const response = await fetch('https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/juaso');
+    const data = await response.json();
+
+    // Pass the fetched data as props to the page
+    return {
+      props: { data },
+    };
+  } catch (error) {
+    console.error('Error fetching data from Directus:', error.message);
+
+    // You can return an empty data object or handle the error as needed
+    return {
+      props: { data: [] },
+    };
+  }
+}
