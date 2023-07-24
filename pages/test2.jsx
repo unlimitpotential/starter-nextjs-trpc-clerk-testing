@@ -65,7 +65,7 @@ export default function Home({ data }) {
     }
   }, [isSignedIn]);
 
-  
+
   useEffect(() => {
     if (fetchedData && fetchedData.webhookResponseData && fetchedData.webhookResponseData.length > 0) {
       // Show each item's content in the webhookResponseData as a toast
@@ -95,8 +95,7 @@ export default function Home({ data }) {
             {/* Your JSX elements for displaying valid data */}
             {/* Conditionally render the components for each item in webhookResponseData */}
            
-            <p>{fetchedData.message}</p>
-            {/* Display webhook response data */}
+          
             {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content && (
   <SignOutButton />                )}
    {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content2 && (
@@ -106,7 +105,7 @@ export default function Home({ data }) {
               <p>UUID is valid!</p>
             </button>
 
-            <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
+          
 
           </>
         ) : (
