@@ -6,6 +6,14 @@ import { useEffect, useState } from "react";
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
+const UserId = process.env.NOW_PUBLIC_USER_ID || '';
+const SpaceId = process.env.NOW_SPACE_ID || '';
+const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
+console.log(UserId);
+console.log(SpaceId);
+console.log(BlueprintId);
+const unixTimestamp = Math.floor(Date.now() / 1000);
+console.log(unixTimestamp);
 export default function Home({ data }) {
   const [isValid, setIsValid] = useState(false);
   const { isSignedIn } = useAuth();
@@ -38,6 +46,8 @@ export default function Home({ data }) {
     }
   }, [isSignedIn]);
 
+  
+
   return (
     <>
       <Head>
@@ -59,6 +69,11 @@ export default function Home({ data }) {
         )}
         <SignOutButton />
       </SignedIn>
+      <SignedOut>
+      <Card>
+        <Welcome />
+      </Card>
+    </SignedOut>
     </>
   );
 }
