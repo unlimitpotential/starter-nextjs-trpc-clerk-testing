@@ -86,6 +86,14 @@ export default function Home({ data }) {
               </div>
             </div>
             <SignOutButton />
+
+            {/* Your JSX elements for displaying valid data */}
+            <p>{data.message}</p>
+            {/* Display webhook response data */}
+            {data.webhookResponseData && (
+              <p>{JSON.stringify(data.webhookResponseData)}</p>
+            )}
+            {/* ... (other JSX elements for displaying data) */}
           </div>
         ) : (
           <div className="flex justify-center items-center h-screen">
@@ -95,10 +103,6 @@ export default function Home({ data }) {
 
         {/* Add the Toaster component here */}
         <Toaster />
-
-        <button onClick={() => toast("My first toast")}>
-          Trigger Toast
-        </button>
       </SignedIn>
       <SignedOut>
         <Card>
