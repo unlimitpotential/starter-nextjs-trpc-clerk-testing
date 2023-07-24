@@ -15,7 +15,14 @@ const SpaceId = process.env.NOW_SPACE_ID || '';
 const BlueprintId = process.env.NOW_BLUEPRINT_ID || '';
 
 const unixTimestamp = Math.floor(Date.now() / 1000);
+
+
 const DirectusCard = ({ data }) => {
+  // Check if data is defined and contains items before rendering
+  if (!data || data.length === 0) {
+    return <div>No data available.</div>;
+  }
+
   return (
     <div>
       {data.map((item) => (
@@ -28,6 +35,7 @@ const DirectusCard = ({ data }) => {
     </div>
   );
 };
+
 
 export default function Home({ data }) {
   console.log("Fetched Data:", data); // Log the data to the console
