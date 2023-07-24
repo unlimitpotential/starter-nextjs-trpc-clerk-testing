@@ -101,11 +101,12 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SignedIn>
+                    {/* Your JSX elements for displaying valid data */}
+
         {isValid && fetchedData ? (
           <>
         <Toaster expand={true} />
 
-            {/* Your JSX elements for displaying valid data */}
             {/* Conditionally render the components for each item in webhookResponseData */}
            
           
@@ -117,11 +118,10 @@ export default function Home({ data }) {
             <button onClick={() => toast(`${fetchedData.message}`)}>
               <p>UUID is valid!</p>
             </button>
-            {data && data.length > 0 ? (
-          <DirectusCard data={data} />
-        ) : (
-          <div>No data available.</div>
-        )}
+
+                    {/* Check if data is defined before rendering DirectusCard */}
+
+                    <pre>{JSON.stringify(data, null, 2)}</pre>
           
 
           </>

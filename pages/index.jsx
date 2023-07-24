@@ -193,7 +193,7 @@ return (
           <Card>
             <header>
               <a
-                href={`test?blueprint&role=${BlueprintId}&projects=${SpaceId}&campaign=${unixTimestamp} `}
+                href={`blueprint-roles?blueprint&role=${BlueprintId}&projects=${SpaceId}&campaign=${unixTimestamp} `}
               >
                 Create
               </a>
