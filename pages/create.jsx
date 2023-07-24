@@ -21,8 +21,8 @@ const SamplePage = () => {
     // Payload data
     const payload = {
       field1: UserId,
-      field2: SpaceId,
-      field3: nameOnCard,
+      field3: SpaceId,
+      field2: nameOnCard,
     };
 
     // Headers
