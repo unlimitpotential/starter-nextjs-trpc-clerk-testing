@@ -65,6 +65,82 @@ const SamplePage = () => {
     }
   }, [response]); // Run this effect whenever the 'response' state changes
 
+  const utils = trpc.useContext();
+  const { isSignedIn } = useAuth();
+
+  const { data: todos } = trpc.todo.list.useQuery(undefined, {
+    enabled: isSignedIn,
+  });
+
+  const { mutate: addTodo } = trpc.todo.add.useMutation({
+    onMutate: async (newTodo) => {
+      await utils.todo.list.cancel();
+
+      const previousTodos = utils.todo.list.getData();
+
+      const optimisticTodo = {
+        title: newTodo.title,
+        createdAt: new Date().toISOString(),
+        userId: "me",
+        id: "optimistic_" + self.crypto.randomUUID(),
+        isCompleted: false,
+      };
+      utils.todo.list.setData(undefined, (old) =>
+        old ? [...old, optimisticTodo] : [optimisticTodo]
+      );
+
+      return { previousTodos };
+    },
+    onError: (_err, _newTodo, context) => {
+      utils.todo.list.setData(undefined, context?.previousTodos);
+    },
+    onSettled: () => {
+      utils.todo.list.invalidate();
+    },
+  });
+
+  const { mutate: deleteTodo } = trpc.todo.delete.useMutation({
+    onMutate: async (deletedTodo) => {
+      await utils.todo.list.cancel();
+
+      const previousTodos = utils.todo.list.getData();
+
+      utils.todo.list.setData(undefined, (old) =>
+        old ? old.filter((i) => i.id !== deletedTodo.id) : []
+      );
+
+      return { previousTodos };
+    },
+    onError: (_err, _newTodo, context) => {
+      utils.todo.list.setData(undefined, context?.previousTodos);
+    },
+    onSettled: () => {
+      utils.todo.list.invalidate();
+    },
+  });
+
+  const { mutate: updateTodo } = trpc.todo.update.useMutation({
+    onMutate: async (updatedTodo) => {
+      await utils.todo.list.cancel();
+
+      const previousTodos = await utils.todo.list.getData();
+      utils.todo.list.setData(undefined, (old) =>
+        old
+          ? old.map((i) =>
+              i.id === updatedTodo.id ? { ...i, ...updatedTodo } : i
+            )
+          : []
+      );
+
+      return { previousTodos };
+    },
+    onError: (_err, _newTodo, context) => {
+      utils.todo.list.setData(undefined, context?.previousTodos);
+    },
+    onSettled: () => {
+      utils.todo.list.invalidate();
+    },
+  });
   return (
     <div>
 <Toaster expand={true} />
