@@ -1,8 +1,9 @@
 // pages/index.js
 import Head from "next/head";
-import { SignedIn, SignOutButton, useAuth } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { Loading } from '@nextui-org/react';
+import { Card } from "../components/Card/Card";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
