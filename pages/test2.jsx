@@ -36,6 +36,16 @@ const DirectusCard = ({ data }) => {
   );
 };
 
+// Helper function to show a toast notification with a delay
+const showToastWithDelay = (content, delay) => {
+  setTimeout(() => {
+    toast(content, {
+      position: 'top-right',
+      duration: 6000, // Duration for showing the toast (in milliseconds)
+    });
+  }, delay);
+};
+
 
 export default function Home({ data }) {
   console.log("Fetched Data:", data); // Log the data to the console
@@ -90,13 +100,10 @@ export default function Home({ data }) {
 
   useEffect(() => {
     if (fetchedData && fetchedData.webhookResponseData && fetchedData.webhookResponseData.length > 0) {
-      // Show each item's content in the webhookResponseData as a toast
+      // Show each item's content in the webhookResponseData as a toast with a 10-second delay between each
       fetchedData.webhookResponseData.forEach((item, index) => {
-        toast(item.content, {
-          // You can customize the toast options here if needed
-          position: 'top-right',
-          duration: 6000, // Duration for showing the toast (in milliseconds)
-        });
+        const delay = index * 10000; // 10 seconds delay for each item
+        showToastWithDelay(item.content, delay);
       });
     }
   }, [fetchedData]);
