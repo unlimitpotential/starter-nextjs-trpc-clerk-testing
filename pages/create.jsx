@@ -79,7 +79,7 @@ const SamplePage = () => {
         className="mt-2 block w-full rounded-xl border-2 border-muted-3 bg-transparent px-4 py-2.5 font-semibold text-heading placeholder:text-text/50 focus:border-primary focus:outline-none focus:ring-0 sm:text-sm"
       />
       <button onClick={handleClick}>Make API Request</button>
-      {fetchedData.webhookResponseData && fetchedData.webhookResponseData.content2 && (
+      {response.webhookResponseData && response.webhookResponseData.content2 && (
             <SignOutButton />
           )}
 
