@@ -7,7 +7,7 @@ const SamplePage = () => {
   
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
-    const token = "123456789";
+    const token = "22-22-22";
 
     // Payload data
     const payload = {
