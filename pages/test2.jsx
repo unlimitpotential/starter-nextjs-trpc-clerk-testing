@@ -6,6 +6,7 @@ import { Loading } from '@nextui-org/react';
 import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
 import { Toaster, toast } from 'sonner';
+import DirectusDataComponent from "../components/directus";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
@@ -90,7 +91,7 @@ export default function Home({ data }) {
       <SignedIn>
         {isValid && fetchedData ? (
           <>
-            <Toaster />
+        <Toaster expand={true} />
 
             {/* Your JSX elements for displaying valid data */}
             {/* Conditionally render the components for each item in webhookResponseData */}
@@ -104,7 +105,7 @@ export default function Home({ data }) {
             <button onClick={() => toast(`${fetchedData.message}`)}>
               <p>UUID is valid!</p>
             </button>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <DirectusDataComponent data={data} /> {/* Render the Directus data here */}
 
           
 
