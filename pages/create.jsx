@@ -31,9 +31,7 @@ const SamplePage = () => {
   const [nameOnCard, setNameOnCard] = useState('');
   const { user } = useUser()
 
-  if (!isLoaded || !isSignedIn) {
-    return null
-  }
+
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
