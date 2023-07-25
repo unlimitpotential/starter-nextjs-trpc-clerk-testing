@@ -31,11 +31,10 @@ const SamplePage = () => {
 
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
-    const user =  currentUser();
 
     // Payload data
     const payload = {
-      field1: user.id,
+      field1: UserId,
       field3: SpaceId,
       field2: nameOnCard,
     };
