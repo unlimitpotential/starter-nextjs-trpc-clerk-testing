@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
+import { SignedIn, currentUser, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
 import { RouterOutputs, trpc } from "../utils/trpc";
