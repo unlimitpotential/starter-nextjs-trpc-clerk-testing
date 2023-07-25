@@ -5,7 +5,7 @@ import { AddTodo } from "../components/AddTodo/AddTodo";
 import { TodoItem } from "../components/TodoItem/TodoItem";
 import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
-import { SignedIn, currentUser, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
+import { SignedIn, useUser, currentUser, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '22-22-22';
 const UserId = process.env.NOW_PUBLIC_USER_ID || 'user_2LSoovL0oXdM3kxYgjRnhDOuFrA';
@@ -28,13 +28,17 @@ const showToastWithDelay = (content, delay) => {
 const SamplePage = () => {
   const [response, setResponse] = useState(null);
   const [nameOnCard, setNameOnCard] = useState('');
+  const { user } = useUser()
 
+  if (!isLoaded || !isSignedIn) {
+    return null
+  }
   const handleClick = async () => {
     const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
     // Payload data
     const payload = {
-      field1: UserId,
+      field1: user.id,
       field3: SpaceId,
       field2: nameOnCard,
     };
