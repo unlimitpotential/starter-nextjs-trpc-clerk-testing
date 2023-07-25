@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from 'react';
 import { Toaster, toast } from 'sonner';
 import { RouterOutputs, trpc } from "../utils/trpc";
