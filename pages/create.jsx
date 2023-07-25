@@ -5,7 +5,7 @@ import { AddTodo } from "../components/AddTodo/AddTodo";
 import { TodoItem } from "../components/TodoItem/TodoItem";
 import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
-import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
+import { SignedIn, currentUser, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '22-22-22';
 const UserId = process.env.NOW_PUBLIC_USER_ID || 'user_2LSoovL0oXdM3kxYgjRnhDOuFrA';
@@ -192,12 +192,7 @@ const SamplePage = () => {
         className="mt-2 block w-full rounded-xl border-2 border-muted-3 bg-transparent px-4 py-2.5 font-semibold text-heading placeholder:text-text/50 focus:border-primary focus:outline-none focus:ring-0 sm:text-sm"
       />
       <button onClick={handleClick}>Make API Request</button>
-      {response && (
-        <div>
-          <h2>Response:</h2>
-          <pre>{JSON.stringify(response, null, 2)}</pre>
-        </div>
-      )}
+     
      
     </div>
   );
