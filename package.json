@@ -13,6 +13,7 @@
   "dependencies": {
     "@clerk/nextjs": "^4.6.13",
     "@descope/react-sdk": "^1.0.9",
+    "@headlessui/react": "^1.7.15",
     "@next-auth/prisma-adapter": "^1.0.7",
     "@next/font": "13.4.12",
     "@nextui-org/react": "^1.0.0-beta.13",
@@ -28,6 +29,7 @@
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "@upstash/ratelimit": "^0.4.3",
+    "@vercel/analytics": "^1.0.1",
     "@xata.io/client": "^0.24.3",
     "email-validator": "^2.0.4",
     "eslint": "8.45.0",
@@ -38,10 +40,14 @@
     "npm": "^9.8.1",
     "nsfwjs": "^2.2.0",
     "react": "18.2.0",
+    "react-compare-slider": "^2.2.0",
     "react-dom": "18.2.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-uploader": "^3.38.0",
     "sonner": "^0.6.2",
     "superjson": "^1.12.1",
     "typescript": "5.1.6",
+    "uploader": "^3.39.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {

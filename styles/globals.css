@@ -1,0 +1,90 @@
+
+@layer base {
+  :root {
+    --slate1: 206 30% 98.8%;
+    --slate2: 210 16.7% 97.6%;
+    --slate3: 209 13.3% 95.3%;
+    --slate4: 209 12.2% 93.2%;
+    --slate5: 208 11.7% 91.1%;
+    --slate6: 208 11.3% 88.9%;
+    --slate7: 207 11.1% 85.9%;
+    --slate8: 205 10.7% 78%;
+    --slate9: 206 6% 56.1%;
+    --slate10: 206 5.8% 52.3%;
+    --slate11: 206 6% 43.5%;
+    --slate12: 206 24% 9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --slate1: 200 7% 8.8%;
+    --slate2: 195 7.1% 11%;
+    --slate3: 197 6.8% 13.6%;
+    --slate4: 198 6.6% 15.8%;
+    --slate5: 199 6.4% 17.9%;
+    --slate6: 201 6.2% 20.5%;
+    --slate7: 203 6% 24.3%;
+    --slate8: 207 5.6% 31.6%;
+    --slate9: 206 6% 43.9%;
+    --slate10: 206 5.2% 49.5%;
+    --slate11: 206 6% 63%;
+    --slate12: 210 6% 93%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-slate1 text-slate12;
+  }
+}
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: "Inter", sans-serif;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
