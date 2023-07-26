@@ -116,7 +116,7 @@ const Home: NextPage = () => {
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
           Restore any face photo
         </h1>
-        {status === "authenticated" && data && (
+        { data && (
           <p className="text-slate-500">
             You have{" "}
             <span className="font-semibold">
@@ -141,7 +141,7 @@ const Home: NextPage = () => {
               restored={restoredImage!}
             />
           )}
-          {status === "loading" ? (
+          { "loading" ? (
             <div className="max-w-[670px] h-[250px] flex justify-center items-center">
               <Rings
                 height="100"
@@ -154,7 +154,7 @@ const Home: NextPage = () => {
                 ariaLabel="rings-loading"
               />
             </div>
-          ) : status === "authenticated" && !originalPhoto ? (
+          ) :  !originalPhoto ? (
             <UploadDropZone />
           ) : (
             !originalPhoto && (
