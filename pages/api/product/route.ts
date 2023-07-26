@@ -1,4 +1,4 @@
-import ProductRepository from "@/data/repositories/product_repository";
+import ProductRepository from "../../../data/repositories/product_repository";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {

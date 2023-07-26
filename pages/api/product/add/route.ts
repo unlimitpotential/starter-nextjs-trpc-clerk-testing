@@ -1,4 +1,4 @@
-import { Store } from "@/data/models/product_model";
+import { Store } from "../../../../data/models/product_model";
 import { NextResponse } from "next/server";
 import ProductRepository from "../../../../data/repositories/product_repository";
 
