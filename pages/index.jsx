@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { SignedIn, currentUser, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import { SignIn } from "@clerk/nextjs";
 
 import { RouterOutputs, trpc } from "../utils/trpc";
 import { AddTodo } from "../components/AddTodo/AddTodo";
@@ -236,7 +237,8 @@ return (
             Create
           </a>
         </header>
-        <Welcome />
+        <SignIn />
+
       </Card>
     </SignedOut>
   </>
