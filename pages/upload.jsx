@@ -35,21 +35,6 @@ export default function App() {
   const router = useRouter();
 
   // Extract the project field from the URL
-  const currentUrl = window.location.href;
-  const urlParams = new URLSearchParams(window.location.search);
-  const role = urlParams.get('role');
-  const project = urlParams.get('projects');
-  const campaign = urlParams.get('campaign');
-  const projectRegex = /projects\?=([^&]+)/;
-  const match = currentUrl.match(projectRegex);
-  const project2 = match ? match[1] : '';
-
-  // Use the extracted project field as a parameter for the API call
-
-  console.log('Role:', role);
-  console.log('Project:', project);
-  console.log('Campaign:', campaign);
-  console.log('space-slug:', project2); 
 
   const uppy = useUppy(() => {
     const instance = new Uppy({
@@ -105,7 +90,7 @@ export default function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          result: files,  name: nameOnCard, role: role, project: project, campaign: campaign,
+          result: files,  name: nameOnCard,
           userId: UserId,
         }),
       });
