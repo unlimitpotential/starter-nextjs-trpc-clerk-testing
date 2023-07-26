@@ -6,6 +6,7 @@ import '@uppy/core/dist/style.css';
 import '@uppy/status-bar/dist/style.css';
 import '@uppy/drag-drop/dist/style.css';
 import { RadioGroup } from '@headlessui/react'
+import { useRouter } from "next/router";
 
 const authorizationKey = process.env.NOW_PUBLIC_API_KEY || '22-22-22';
 const UserId = process.env.NOW_PUBLIC_USER_ID || 'user_2LSoovL0oXdM3kxYgjRnhDOuFrA';
