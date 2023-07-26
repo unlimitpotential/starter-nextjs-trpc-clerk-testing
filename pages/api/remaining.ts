@@ -5,13 +5,11 @@ import { authOptions } from "./auth/[...nextauth]";
 import { auth } from '@clerk/nextjs';
 import { currentUser } from '@clerk/nextjs';
 
-export async function GET(res: any) {
-  const {userId} = auth();
 
-  // Check if user is logged in
-  if(!userId){
-    return res.status(500).json("Login to upload.");
-  }
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const user = await currentUser();
 
   // Query the redis database by email to get the number of generations left
