@@ -2,7 +2,7 @@ import { currentUser } from "@clerk/nextjs";
 import { Prisma } from "@prisma/client";
 import { parse } from "node-html-parser";
 import { Job, scheduleJob } from "node-schedule";
-import { prisma } from "../../app/api/_base";
+import { prisma } from "../../pages/api/_base";
 import { AJIO_PRODUCT_ENDPOINT } from "../../config/constants";
 import Utils from "../../utils/utils";
 import { Product, Status, Store } from "../models/product_model";

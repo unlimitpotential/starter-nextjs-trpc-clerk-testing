@@ -1,4 +1,4 @@
-import { prisma } from "../../app/api/_base";
+import { prisma } from "../../pages/api/_base";
 import { Snapshot } from "../models/snapshot_model";
 
 export default class SnapshotRepository {
