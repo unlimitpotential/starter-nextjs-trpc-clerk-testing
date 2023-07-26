@@ -7,7 +7,7 @@ import { Card } from "../components/Card/Card";
 import { Welcome } from "../components/Welcome/Welcome";
 import { Toaster, toast } from 'sonner';
 
-const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "22-22-22";
+const authorizationKey = process.env.NOW_PUBLIC_API_KEY || "user_2EUtRXNdHTnXHbRm35CyiYVJED0";
 const apiEndpoint = "https://nestjs-nextjs-trpc-monorepo-production.up.railway.app/actions";
 
 const UserId = process.env.NOW_PUBLIC_USER_ID || '';
