@@ -49,6 +49,7 @@
     "@upstash/ratelimit": "^0.4.3",
     "@vercel/analytics": "^1.0.1",
     "@xata.io/client": "^0.24.3",
+    "axios": "^1.4.0",
     "class-variance-authority": "^0.7.0",
     "email-validator": "^2.0.4",
     "eslint": "8.45.0",
