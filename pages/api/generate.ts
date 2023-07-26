@@ -3,6 +3,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import redis from "../../utils/redis";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
+import { auth } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs';
 
 type Data = string;
 interface ExtendedNextApiRequest extends NextApiRequest {
@@ -25,14 +27,14 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   // Check if user is logged in
-  const session = await getServerSession(req, res, authOptions);
-  if (!session || !session.user) {
+  const {userId} = auth();
+  if(!userId){
     return res.status(500).json("Login to upload.");
   }
-
   // Rate Limiting by user email
   if (ratelimit) {
-    const identifier = session.user.email;
+    const user = await currentUser();
+    const identifier = user?.primaryEmailAddressId;
     const result = await ratelimit.limit(identifier!);
     res.setHeader("X-RateLimit-Limit", result.limit);
     res.setHeader("X-RateLimit-Remaining", result.remaining);

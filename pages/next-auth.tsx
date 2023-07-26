@@ -10,7 +10,7 @@ import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
 import NSFWPredictor from "../utils/nsfwCheck";
 import va from "@vercel/analytics";
-import { SignedIn, SignedOut, SignOutButton, useAuth } from "@clerk/nextjs";
+import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
 import { Rings } from "react-loader-spinner";
 import LoadingDots from "../components/LoadingDots";
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR("/api/remaining", fetcher);
-  const { isSignedIn, userId } = useAuth();
+  const { data: session, status } = useSession();
 
   const options = {
     maxFileCount: 1,
@@ -164,7 +164,18 @@ const Home: NextPage = () => {
                   your photos today. You will be able to restore 5 photos per
                   day for free.
                 </div>
-               
+                <button
+                  onClick={() => signIn("google")}
+                  className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
+                >
+                  <Image
+                    src="/google.png"
+                    width={20}
+                    height={20}
+                    alt="google's logo"
+                  />
+                  <span>Sign in with Google</span>
+                </button>
               </div>
             )
           )}
