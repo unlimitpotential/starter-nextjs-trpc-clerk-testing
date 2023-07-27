@@ -158,7 +158,7 @@ export default function Home({ data }) {
 export async function getServerSideProps(context) {
   try {
     // Fetch data from Directus
-    const response = await fetch('https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/Dz1wUsez');
+    const response = await fetch('https://main-bvxea6i-wgvcdjzemdvhw.uk-1.platformsh.site/items/MeG79L4E');
     const data = await response.json();
 
     // Pass the fetched data as props to the page
