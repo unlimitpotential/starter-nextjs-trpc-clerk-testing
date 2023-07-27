@@ -50,7 +50,6 @@ const ProductsPage = () => {
           <Tabs
           defaultValue="ALL"
           className="w-full"
-          onValueChange={onStatusChange}
         >
           <TabsList>
             <TabsTrigger value="ALL">All</TabsTrigger>
