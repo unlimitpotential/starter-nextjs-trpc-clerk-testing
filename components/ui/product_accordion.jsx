@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-key */
 import React from 'react';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Trash2, Pause, Play } from 'lucide-react';
-import { AccordionItem, AccordionTrigger, AccordionContent } from './accordion'; // Replace with the actual path to your accordion component
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion'; // Replace with the actual path to your accordion component
 import Utils from '../../utils/utils';
 import { Button } from './butto'; // Replace with the actual path to your Button component
 import { Card, CardDescription, CardHeader, CardTitle } from './card'; // Replace with the actual path to your Card components
@@ -40,6 +41,7 @@ const ProductsPage = () => {
     <div>
       {products.map((product, index) => {
         return (
+          <Accordion type="single" collapsible>
           <AccordionItem value={`item-${index}`} key={product.id}>
             <AccordionTrigger>
               <div className="md:flex justify-between items-center w-full space-y-2 md:space-y-0">
@@ -169,6 +171,8 @@ const ProductsPage = () => {
               })}
             </AccordionContent>
           </AccordionItem>
+          </Accordion>
+
         );
       })}
     </div>
