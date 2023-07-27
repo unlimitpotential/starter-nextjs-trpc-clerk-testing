@@ -30,7 +30,6 @@ const productData = {
 };
 
 const ProductsPage = ({ productData }) => {
-  const { products, deleteProduct, changeProductStatus, statusLoaders } = useProductAccordionStore(productData);
 
   return (
     <div>
