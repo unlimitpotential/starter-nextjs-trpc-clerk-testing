@@ -31,7 +31,11 @@ const sampleProductData = {
 
 const ProductsPage = () => {
   const { data: products } = sampleProductData;
-
+  const {
+  
+    statusLoaders,
+  
+  } = useProductAccordionStore();
   return (
     <div>
       {products.map((product, index) => {
