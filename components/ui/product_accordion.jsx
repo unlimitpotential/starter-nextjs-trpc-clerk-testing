@@ -1,11 +1,13 @@
 import React from 'react';
+import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Trash2, Pause, Play } from 'lucide-react';
 import { AccordionItem, AccordionTrigger, AccordionContent } from './accordion'; // Replace with the actual path to your accordion component
-import Utils from '../utils/utils';
-import { Button } from '../components/ui/butto'; // Replace with the actual path to your Button component
+import Utils from '../../utils/utils';
+import { Button } from './butto'; // Replace with the actual path to your Button component
 import { Card, CardDescription, CardHeader, CardTitle } from './card'; // Replace with the actual path to your Card components
-import Loader from '../components/ui/loader'; // Replace with the actual path to your Loader component
+import Loader from './loader'; // Replace with the actual path to your Loader component
+import { useProductAccordionStore } from '../../data/stores/product_accordion_store';
 
 const sampleProductData = {
   status: true,
