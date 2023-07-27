@@ -9,7 +9,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from './card'; // Replac
 import Loader from './loader'; // Replace with the actual path to your Loader component
 import { useProductAccordionStore } from '../../data/stores/product_accordion_store';
 
-con
+
 const sampleProductData = {
   status: true,
   data: [
