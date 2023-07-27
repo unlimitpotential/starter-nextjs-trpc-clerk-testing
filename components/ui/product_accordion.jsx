@@ -1,15 +1,13 @@
 import React from 'react';
-import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Trash2, Pause, Play } from 'lucide-react';
 import { AccordionItem, AccordionTrigger, AccordionContent } from './accordion'; // Replace with the actual path to your accordion component
-import Utils from '../../utils/utils';
-import { Button } from './butto'; // Replace with the actual path to your Button component
+import Utils from '../utils/utils';
+import { Button } from '../components/ui/butto'; // Replace with the actual path to your Button component
 import { Card, CardDescription, CardHeader, CardTitle } from './card'; // Replace with the actual path to your Card components
-import Loader from './loader'; // Replace with the actual path to your Loader component
+import Loader from '../components/ui/loader'; // Replace with the actual path to your Loader component
 
-// Sample product data
-const productData = {
+const sampleProductData = {
   status: true,
   data: [
     {
@@ -25,15 +23,15 @@ const productData = {
       userId: 'user_2T88t7KZE1r9WluWIgl2fcZJnMn',
       snapshots: [],
     },
-    // Add more product data as needed
   ],
 };
 
-const ProductsPage = ({ productData }) => {
+const ProductsPage = () => {
+  const { data: products } = sampleProductData;
 
   return (
     <div>
-      {productData.map((product, index) => {
+      {products.map((product, index) => {
         return (
           <AccordionItem value={`item-${index}`} key={product.id}>
             <AccordionTrigger>
@@ -67,14 +65,6 @@ const ProductsPage = ({ productData }) => {
       })}
     </div>
   );
-};
-
-export const getStaticProps = async () => {
-  return {
-    props: {
-      productData,
-    },
-  };
 };
 
 export default ProductsPage;
