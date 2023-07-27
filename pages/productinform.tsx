@@ -8,7 +8,7 @@ export default function Home() {
         <h1 className="text-5xl font-semibold text-center tracking-wide">
           Ecommerce Price Informer
         </h1>
-        <ProductAccordion />
+        <ProductAccordion productData={undefined} />
         <AddProductForm />
       </main>
     </>
