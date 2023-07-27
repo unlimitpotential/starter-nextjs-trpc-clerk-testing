@@ -33,7 +33,7 @@ const ProductsPage = ({ productData }) => {
 
   return (
     <div>
-      {products.map((product, index) => {
+      {productData.map((product, index) => {
         return (
           <AccordionItem value={`item-${index}`} key={product.id}>
             <AccordionTrigger>
