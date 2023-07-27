@@ -3,12 +3,18 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Trash2, Pause, Play } from 'lucide-react';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion'; // Replace with the actual path to your accordion component
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./accordion";
 import Utils from '../../utils/utils';
 import { Button } from './butto'; // Replace with the actual path to your Button component
 import { Card, CardDescription, CardHeader, CardTitle } from './card'; // Replace with the actual path to your Card components
 import Loader from './loader'; // Replace with the actual path to your Loader component
 import { useProductAccordionStore } from '../../data/stores/product_accordion_store';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
 
 
 const sampleProductData = {
@@ -41,6 +47,16 @@ const ProductsPage = () => {
     <div>
       {products.map((product, index) => {
         return (
+          <Tabs
+          defaultValue="ALL"
+          className="w-full"
+          onValueChange={onStatusChange}
+        >
+          <TabsList>
+            <TabsTrigger value="ALL">All</TabsTrigger>
+            <TabsTrigger value="RUNNING">Running</TabsTrigger>
+            <TabsTrigger value="PAUSED">Paused</TabsTrigger>
+          </TabsList>
           <Accordion type="single" collapsible>
           <AccordionItem value={`item-${index}`} key={product.id}>
             <AccordionTrigger>
@@ -172,7 +188,7 @@ const ProductsPage = () => {
             </AccordionContent>
           </AccordionItem>
           </Accordion>
-
+          </Tabs>
         );
       })}
     </div>
